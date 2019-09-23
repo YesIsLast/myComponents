@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>树组件</title>
+    <script src="../assets/js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
+    <link rel="stylesheet" href="../assets/css/globalcss.css">
+</head>
+
+<body>
+    <div id="treeViewContent"></div>
+</body>
+<script src="../assets/js/globaljs.js"></script>
+<script>
+    $(document).ready(function () {
+        // 树结构JSON
+        var treeData = [
+            {
+                id: 1, // 当前节点标识符
+                name: "张飞", // 当前节点名称
+                checked: false,
+                p: 0 // 当前节点所在层级,如果为0的话，标识父级菜单，如果p为1的话就属于id 为1 的子级菜单
+            },
+            {
+                id: 2,
+                name: "张飞子",
+                checked: false,
+                p: 1
+            },
+            {
+                id: 3,
+                name: "张飞孙",
+                checked: true,
+                p: 2
+            },
+            {
+                id: 4,
+                name: "赵云",
+                checked: false,
+                p: 0
+            },
+            {
+                id: 5,
+                name: "马超",
+                checked: true,
+                p: 0
+            },
+            {
+                id: 6,
+                name: "马超子",
+                checked: true,
+                p: 5
+            },
+        ]
+        
+        // 节点数据添加
+        $('#treeViewContent').html(selectTree(0,1))
+        // 节点循环选中
+        treeClick()
+        
+// 向html节点中添加树
+function selectTree(param,index) {
+    var treeHtml = '', haveChild = false
+    for (let i in treeData) {
+        if (treeData[i].p == param) {
+            // 当前节点下是否有子节点
+            haveChild = true
+            // 判断当前节点是否被选中
+            let checkedStr = ''
+            if (treeData[i].checked) {
+                checkedStr = 'checked'
+            } else {
+                checkedStr = ''
+            }
+            treeHtml += '<li>' +
+                '<a href="#">' +
+                '<input ' + checkedStr + ' class="tree' + index + '" type="checkbox" name="treeCheckbox" data-treeobj=' + JSON.stringify(treeData[i]) + '>' +
+                treeData[i].name +
+                '</a>'
+            treeHtml += selectTree(treeData[i].id, index + 1) + '</li>'
+        }
+    }
+    if (haveChild) {
+        // treeHtml嵌套ul
+        return '<ul>' + treeHtml + '</ul>'
+    } else {
+        return ""
+    }
+}
+    })
+</script>
+
+</html>

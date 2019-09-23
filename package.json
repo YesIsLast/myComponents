@@ -1,0 +1,12 @@
+{
+  "name": "myComponents",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "npx browser-sync start --server --files \"**/*.css, **/*.js, **/*.html, **/*.jsp\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,57 @@
+
+/*tree*/
+#treeViewContent {
+    padding: 10px;
+}
+#treeViewContent ul, #treeViewContent li{
+    padding: 0;
+    margin: 0;
+}
+#treeViewContent li{
+    margin-left: 10px;
+    list-style-type: none;
+    border-left: 1px dashed #cccccc;
+}
+#treeViewContent li:before{
+    content: '-------';
+    color:#cccccc ;
+}
+.tree1:before{
+    content: '+';
+    font-weight: 900;
+    font-size: x-large;
+    position: relative;
+    bottom: 12px;
+    right: 38px;
+}
+.tree2:before {
+    content: '-';
+    font-weight: 900;
+    font-size: xx-large;
+    position: relative;
+    bottom: 20px;
+    right: 32px;
+}
+.tree3:before{
+    content: '-';
+    font-weight: 900;
+    font-size: xx-large;
+    position: relative;
+    bottom: 20px;
+    right: 32px;
+}
+#treeViewContent a{
+    color: #676a6c;
+    padding: 0px 8px;
+    border-radius: 3px;
+}
+#treeViewContent a:hover{
+    background-color: #beebff;
+    /*color: #676a6c;*/
+}
+#treeViewContent input{
+    margin-right: 5px;
+}
+#treeViewContent ul{
+    border-left:0
+}
