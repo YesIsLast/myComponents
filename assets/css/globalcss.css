@@ -1,4 +1,96 @@
+/* 全局标签样式 */
+body{
+    height: 100%;
+    width: 100%;
+    background-color:#333333;
+    overflow:hidden;
+    padding: 0;
+    margin: 0;
+    color: #BDBDBD;
+}
+/* 鼠标样式更改 */
+*{
+    cursor:url(../image/bigPig.ico),auto;
+}
 
+/* ul li {
+    padding:0;
+    margin:0;
+    list-style:none
+} */
+/* 全局样式 */
+.global-text-center{
+    text-align: center;
+}
+.global-text-left{
+    text-align: left;
+}
+.global-text-right{
+    text-align: right;
+}
+.global-bgmcolor-black{
+    background-color: #1E1E1E;
+}
+.global-bgmcolor-menu{
+    background-color: #252526;
+}
+
+.global-bgmcolor-gray{
+    background-color: #333333;
+}
+.global-display-none{
+    display: none;
+}
+.global-display-block{
+    display: block;
+}
+.global-border-bottom{
+    box-shadow:0px 2px 2px rgb(0, 0, 0);
+}
+
+.global-padding-0{
+    padding: 0;
+}
+.global-margin-0{
+    margin: 0;
+}
+
+
+.menu li:hover{
+    color: #ffffff;
+    background-color: #094771;
+}
+
+.global-width-100{
+    width: 100%;
+}
+
+.global-flex{
+    display: flex;
+}
+.global-flex-row{
+    flex-direction: row
+}
+.global-head{
+    height: 10vh;
+}
+.global-footer{
+    height: 10vh;
+}
+.global-leftmenu{
+    width: 15vw;
+}
+.global-leftmenu ul{
+    padding: 0;
+}
+
+.global-rightmenu{
+    width: 10vw;
+}
+.global-content{
+    height: 80vh;
+    width: 80vw;
+}
 /*tree*/
 #treeViewContent {
     padding: 10px;
@@ -55,3 +147,4 @@
 #treeViewContent ul{
     border-left:0
 }
+
