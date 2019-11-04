@@ -3,16 +3,80 @@
 
 <head>
     <title>组件库复习笔记</title>
+    <script src="./assets/js/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/animate.css">
+    <link rel="stylesheet" href="./assets/css/globalcss.css">
 </head>
+
+<style>
+</style>
 
 <body>
 
-    <iframe src="./tree/treeComponents.html" width="100%" height="700px"></iframe>
+    <!-- <iframe src="./tree/treeComponents.html" width="100%" height="700px"></iframe> -->
+    <div class="global-head global-bgmcolor-gray">
+
+    </div>
+
+    <div class="global-flex">
+
+        <div class="global-leftmenu global-text-center global-bgmcolor-menu">
+            <h2 class="global-border-bottom global-margin-0">菜单列表</h2>
+            <ul>
+                <li><span onclick="foldMenu(this)">手撸组件→</span>
+                    <ul class="global-text-center global-display-none menu animated fadeInLeft">
+                        <li class="global-bgmcolor-gray" onclick="jumpMenu('树结构组件')">树结构组件↓</li>
+                        <li class="global-bgmcolor-gray" onclick="jumpMenu('穿梭框组件')">穿梭框组件↓</li>
+                        <li class="global-bgmcolor-gray" onclick="jumpMenu('省市区三级联动组件')">省市区三级联动组件↓</li>
+                    </ul>
+                </li>
+                <li><span onclick="foldMenu(this)">插件组件→</span>
+                    <ul class="global-text-center global-display-none menu animated fadeInLeft">
+                        <li class="global-bgmcolor-gray" onclick="jumpMenu('树结构组件')">树结构组件↓</li>
+                        <li class="global-bgmcolor-gray" onclick="jumpMenu('穿梭框组件')">穿梭框组件↓</li>
+                        <li class="global-bgmcolor-gray" onclick="jumpMenu('省市区三级联动组件')">省市区三级联动组件↓</li>
+                    </ul>
+                </li>
+                <li><span onclick="foldMenu(this)">网址导航→</span>
+                    <ul class="global-text-center global-display-none menu animated fadeInLeft">
+                        <li class="global-bgmcolor-gray" onclick="jumpMenu('树结构组件')">树结构组件↓</li>
+                        <li class="global-bgmcolor-gray" onclick="jumpMenu('穿梭框组件')">穿梭框组件↓</li>
+                        <li class="global-bgmcolor-gray" onclick="jumpMenu('省市区三级联动组件')">省市区三级联动组件↓</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- 内容区存放 -->
+        <div class="global-content global-bgmcolor-black" id="pageContent">
+
+        </div>
+        <div class="global-rightmenu global-text-center global-bgmcolor-menu"></div>
+    </div>
+
+    <div class="global-footer global-bgmcolor-gray">
+
+    </div>
 
 </body>
 
 <script>
+    // 菜单折叠
+    function foldMenu(attribute) {
+        // 隐藏当前父级菜单的子菜单
+        $(attribute).parent('li').parent('ul').children('li').each(function () {
+            $(this).children('ul').removeClass('global-display-none')
+            $(this).children('ul').removeClass('global-display-block')
+            $(this).children('ul').addClass('global-display-none')
+        })
+        $(attribute).next().addClass('global-display-block')
+    }
 
+    // 菜单点击操作
+    function jumpMenu(menuUrl) {
+        $('#pageContent').html(
+            '<h1>查看当前点击的菜单为：' + menuUrl + '</h1>'
+        )
+    }
 </script>
 
 </html>
