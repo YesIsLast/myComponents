@@ -12,6 +12,9 @@ body{
 *{
     cursor:url(../image/bigPig.ico),auto;
 }
+iframe {
+    border: none;
+}
 
 /* ul li {
     padding:0;
@@ -34,7 +37,9 @@ body{
 .global-bgmcolor-menu{
     background-color: #252526;
 }
-
+.global-color-white{
+    color: #BDBDBD;
+}
 .global-bgmcolor-gray{
     background-color: #333333;
 }
