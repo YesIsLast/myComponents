@@ -6,16 +6,27 @@
     <script src="./assets/js/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="./assets/css/animate.css">
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/globalcss.css">
+    <link rel="stylesheet" href="./assets/css/global.css">
 </head>
 
 <style>
+
+    .pageA{
+        color: white;
+        padding: 10px 30px;
+    }
+    .pageA:hover{
+        color: white;
+        background-color: rgb(88, 87, 87);
+    }
 </style>
 
 <body>
-
     <div class="global-head global-bgmcolor-gray">
-
+        <div class="global-flex">
+            <img src="./assets/image/mouseImg.jpg" height="100px" width="100px" alt="">
+            <a class="pageA" href="./apiProject/api.html">布局页面(A)</a>
+        </div>
     </div>
 
     <div class="global-flex">
@@ -26,8 +37,8 @@
                 <li><span onclick="foldMenu(this)">手撸组件→</span>
                     <ul class="global-text-center global-display-none menu animated fadeInLeft">
                         <li class="global-bgmcolor-gray" onclick="jumpMenu('./tree/treeComponents.html')">树结构组件</li>
-                        <li class="global-bgmcolor-gray" onclick="jumpMenu('穿梭框组件')">穿梭框组件</li>
-                        <li class="global-bgmcolor-gray" onclick="jumpMenu('省市区三级联动组件')">省市区三级联动组件</li>
+                        <li class="global-bgmcolor-gray" onclick="jumpMenu('./transform/transformComponents.html')">穿梭框组件</li>
+                        <li class="global-bgmcolor-gray" onclick="jumpMenu('./assets/plugins/jquery-Select(省市区三级联动)/index.html')">省市区三级联动组件</li>
                     </ul>
                 </li>
                 <li><span onclick="foldMenu(this)">插件组件→</span>
@@ -60,6 +71,7 @@
 </body>
 
 <script>
+
     // 菜单折叠
     function foldMenu(attribute) {
         // 隐藏当前父级菜单的子菜单
