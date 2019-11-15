@@ -13,3 +13,23 @@ function treeClick() {
         })
     })
 }
+
+/**
+ * 连点工具
+ * @param {number} clickNum 鼠标点击次数
+ * @param {number} seconds 时间范围限制
+ * @param {number} allNum 点击多少次触发
+ */
+function mouseClick(clickNum,seconds,allNum){
+    var result = {
+        status: true, // 返回是否成功触发
+        clickNum: 0 // 点击次数初始化
+    }
+    if(clickNum == 1){
+        setTimeout(function(){
+            if(clickNum >= allNum){
+                return result
+            }
+        },seconds)
+    }
+}
