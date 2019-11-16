@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "npx browser-sync start --server --files \"**/*.css, **/*.js, **/*.html, **/*.jsp\""
+    "serve": "npx browser-sync start --server --files \"**/*.css, **/*.js, **/*.html, **/*.jsp\"",
+    "start": "npx browser-sync start --server --files \"**/*.css, **/*.js, **/*.html, **/*.jsp\""
   },
   "keywords": [],
   "author": "",
