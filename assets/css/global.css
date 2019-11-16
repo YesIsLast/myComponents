@@ -31,6 +31,9 @@ iframe {
 .global-text-right{
     text-align: right;
 }
+.global-font-size-large{
+    font-size: xx-large;
+}
 .global-bgmcolor-black{
     background-color: #1E1E1E;
 }
