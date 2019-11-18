@@ -46,6 +46,15 @@ iframe {
 .global-bgmcolor-gray{
     background-color: #333333;
 }
+/* 绝对定位 */
+.global-display-absolute{
+    position: absolute
+}
+/* 相对定位 */
+.global-display-relative{
+    position: relative
+}
+/* 隐藏 */
 .global-display-none{
     display: none;
 }
