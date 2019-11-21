@@ -10,24 +10,22 @@
 <style>
     .progressBorder {
         margin: 15%;
-        border: cyan 3px solid;
+        /* border: cyan 3px solid; */
         display: flex;
         background: #ffffff;
+        height: 20px;
     }
 
     .progressBg {
         flex-direction: column;
         background-color: rgb(14, 141, 141);
         width: 2%;
-    }
-
-    .progressBgLoad {
-        width: auto;
+        height: 20px;
     }
 
     .progressText{
-        position: relative;
-        top: -30px;
+        position: absolute;
+        margin-top: -30px;
         color: #ffffff;
     }
 </style>
@@ -40,7 +38,6 @@
         </div>
 
         <div class="progressBg"></div>
-        <div class="progressBgLoad"></div>
 
         <!-- <div class="progressBg">正在加载中<span>0</span>%... </div> -->
     </div>
