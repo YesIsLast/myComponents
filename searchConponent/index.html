@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>192.168.1.10</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- 二维码生成器插件 -->
+    <script src="../assets/js/qrcode.min.js"></script>
+</head>
+<style>
+    .home {
+        display: flex;
+        padding-top: 20px;
+        justify-content: center
+    }
+
+    input {
+        outline: none;
+        /* width: 25%; */
+        height: 40px;
+        font-size: large;
+        letter-spacing: 4px;
+        text-indent: 7px;
+        border-radius: 5px;
+        border: 1px solid #9CDCFE;
+    }
+
+    input::-webkit-input-placeholder {
+        /* placeholder颜色  */
+        color: #cfcfcf;
+        /* placeholder字体大小  */
+        font-size: large;
+    }
+
+    .home button {
+        background: rgb(34, 165, 235);
+        border-radius: 5px;
+        color: #ffffff;
+        font-size: medium;
+        border: solid 1px #ffffff;
+    }
+
+    .filelist {
+        display: flex;
+        justify-content: center;
+        /* background-color: #9CDCFE; */
+        /* margin-left: 35%;
+        margin-right: 35%;
+        margin-top: 2%; */
+    }
+
+    .filelist a {
+        padding: 5px;
+        color: #929292;
+        font-size: medium;
+    }
+
+    .filelist a:focus {
+        font-size: x-large;
+        color: #929292;
+        line-height: 20px;
+    }
+
+    .filelist a:hover {
+        font-size: x-large;
+        color: #929292;
+        line-height: 20px;
+    }
+
+    .filelist li {
+        background-color: #D9EDF7;
+        font-size: medium;
+    }
+
+    ul li {
+        list-style: none;
+    }
+
+    .footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        background-color: #D9EDF7;
+        /* color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center; */
+    }
+
+    #qrcode {
+        margin-left: 43%;
+    }
+
+    .qrcodeImg {
+        padding: 30px;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .list-group {
+        position: relative;
+        right: 38px;
+        min-width: 220px;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <!-- 页面头 -->
+        <div class="page-header">
+            <h1>文件下载搜索引擎
+                <small> 192.168.1.10 </small>
+            </h1>
+        </div>
+        <!-- 走马灯 -->
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img style="height: 300px; width: 100%" src="https://www.baidu.com/img/bd_logo1.png" alt="...">
+                    <div class="carousel-caption">
+                        <h3>这是百度得描述文字</h3>
+                    </div>
+                </div>
+                <div class="item">
+                    <img style="height: 300px; width: 100%;" src="https://www.baidu.com/img/bd_logo1.png" alt="...">
+                    <div class="carousel-caption">
+                        <h3>这是百度得描述文字</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">上一张</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">下一张</span>
+            </a>
+        </div>
+        <!-- 数据入口 -->
+        <div class="home">
+            <input type="text" name="" id="searchFile" placeholder="输入要下载得文件名">
+            <button onclick="searchFileClick()" title="Ctrl + Enter">搜索一下</button>
+        </div>
+        <!-- 搜索结果 -->
+        <div class="filelist">
+            <ul class="list-group">
+            </ul>
+        </div>
+        <!-- 页面脚 -->
+        <div class="footer">
+            <div class="alert alert-info text-center" role="alert">文件下载地址二维码</div>
+            <!-- 二维码展示区 -->
+            <div id="qrcode" class="qrcodeImg text-center">
+            </div>
+            <div class="alert alert-info text-center" role="alert">打开手机浏览器，扫描二维码下载文件</div>
+        </div>
+    </div>
+
+</body>
+<script>
+    // 文件数据库
+    var fileListArr = [
+        {
+            key: '201005.apk',
+            value: '/apk/201005.apk'
+        },
+        {
+            key: '新需求文件.zip',
+            value: '/zipwar/newNeed.zip'
+        }
+    ]
+    // 搜索结果数据库
+    var fileListAhref = []
+    var focusIndex = -1 // 光标移动位置
+
+    var qrcodeSet = new QRCode(document.getElementById("qrcode"), {
+        width: 100,
+        height: 100
+    });
+
+    qrcodeSet.makeCode('你看我帅吗！')
+
+    // 全局键盘事件监听
+    document.onkeydown = function (e) {
+        if (e.keyCode == 13 && e.ctrlKey == true) {
+            searchFileClick()
+        }
+        if (e.keyCode == 40) {
+            focusIndex++
+            moveFocus(focusIndex)
+        }
+        if (e.keyCode == 38) {
+            focusIndex--
+            moveFocus(focusIndex)
+        }
+    }
+    // 光标移动规则
+    function moveFocus(FIndex) {
+        focusIndex = FIndex
+
+        // 文件二维码生成
+        // var qrcode = new QRCode(document.getElementById("qrcode"), {
+        //     width: 100,
+        //     height: 100
+        // });
+        $('#qrcode').html('')
+        if (FIndex < fileListAhref.length && FIndex >= 0) {
+            $('#filelist' + FIndex).focus()
+        } else if (FIndex < -1) {
+            $('#filelist' + fileListAhref.length).focus()
+            focusIndex = fileListAhref.length
+        } else if (FIndex >= fileListAhref.length - 1 || FIndex == -1) {
+            $('#searchFile').focus()
+            focusIndex = -1
+        }
+        console.log(focusIndex,fileListAhref)
+        if (focusIndex >= 0 && focusIndex < fileListAhref.length) {
+            var qrcodeSet = new QRCode(document.getElementById("qrcode"), {
+                width: 100,
+                height: 100
+            });
+            qrcodeSet.makeCode('http://192.168.1.10' + fileListAhref[focusIndex].value)
+        } else {
+            var qrcodeSet = new QRCode(document.getElementById("qrcode"), {
+                width: 100,
+                height: 100
+            });
+            qrcodeSet.makeCode('你看我帅吗！')
+        }
+
+    }
+    // 搜索事件
+    function searchFileClick() {
+        var searchVal = $('#searchFile').val()
+        $('.filelist').children('ul').html('')
+        fileListAhref = []
+        fileListArr.forEach(function (item, index) {
+            if (item.key.indexOf(searchVal) >= 0) {
+                fileListAhref.push(item)
+                $('.filelist').children('ul').append(
+                    '<li class="list-group-item listActive' + index + '">' + item.key + '<a title="Enter" href="' + item.value + '" id="filelist' + index + '">点击下载</a></li>'
+                )
+            }
+        })
+        if (fileListAhref.length == 0) {
+            $('.filelist').children('ul').html('<li class="list-group-item">搜不到怪我咯<a href="#" id="filelist0">要坚强</a></li>')
+        } else {
+            moveFocus(0)
+        }
+    }
+
+</script>
+
+</html>
