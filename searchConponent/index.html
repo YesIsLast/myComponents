@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>192.168.1.10</title>
+    <title>文件下载搜索引擎</title>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
@@ -102,7 +102,7 @@
     }
 
     .qrcodeImg {
-        padding: 30px;
+        /* padding: 30px; */
     }
 
     .text-center {
@@ -136,13 +136,13 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img style="height: 300px; width: 100%" src="https://www.baidu.com/img/bd_logo1.png" alt="...">
+                    <img style="height: 200px; width: 100%" src="https://www.baidu.com/img/bd_logo1.png" alt="...">
                     <div class="carousel-caption">
                         <h3>这是百度得描述文字</h3>
                     </div>
                 </div>
                 <div class="item">
-                    <img style="height: 300px; width: 100%;" src="https://www.baidu.com/img/bd_logo1.png" alt="...">
+                    <img style="height: 200px; width: 100%;" src="https://www.baidu.com/img/bd_logo1.png" alt="...">
                     <div class="carousel-caption">
                         <h3>这是百度得描述文字</h3>
                     </div>
@@ -184,12 +184,12 @@
     // 文件数据库
     var fileListArr = [
         {
-            key: '201005.apk',
-            value: '/apk/201005.apk'
-        },
-        {
             key: '新需求文件.zip',
             value: '/zipwar/newNeed.zip'
+        },
+        {
+            key: '202000.apk',
+            value: '/apk/202000.apk'
         }
     ]
     // 搜索结果数据库
@@ -208,10 +208,12 @@
         if (e.keyCode == 13 && e.ctrlKey == true) {
             searchFileClick()
         }
+        // 下箭头
         if (e.keyCode == 40) {
             focusIndex++
             moveFocus(focusIndex)
         }
+        // 上箭头
         if (e.keyCode == 38) {
             focusIndex--
             moveFocus(focusIndex)
@@ -220,23 +222,17 @@
     // 光标移动规则
     function moveFocus(FIndex) {
         focusIndex = FIndex
-
-        // 文件二维码生成
-        // var qrcode = new QRCode(document.getElementById("qrcode"), {
-        //     width: 100,
-        //     height: 100
-        // });
         $('#qrcode').html('')
-        if (FIndex < fileListAhref.length && FIndex >= 0) {
-            $('#filelist' + FIndex).focus()
-        } else if (FIndex < -1) {
-            $('#filelist' + fileListAhref.length).focus()
-            focusIndex = fileListAhref.length
-        } else if (FIndex >= fileListAhref.length - 1 || FIndex == -1) {
+        if(focusIndex < fileListAhref.length && focusIndex >= 0){
+            $('#filelist' + focusIndex).focus()
+        }else if(focusIndex < -1){
+            focusIndex = fileListAhref.length-1
+            $('#filelist' + focusIndex).focus()
+        }else if(focusIndex > fileListAhref.length-1 || focusIndex == -1){
             $('#searchFile').focus()
             focusIndex = -1
         }
-        console.log(focusIndex,fileListAhref)
+
         if (focusIndex >= 0 && focusIndex < fileListAhref.length) {
             var qrcodeSet = new QRCode(document.getElementById("qrcode"), {
                 width: 100,
@@ -248,7 +244,7 @@
                 width: 100,
                 height: 100
             });
-            qrcodeSet.makeCode('你看我帅吗！')
+            qrcodeSet.makeCode($('#searchFile').val())
         }
 
     }
@@ -261,7 +257,7 @@
             if (item.key.indexOf(searchVal) >= 0) {
                 fileListAhref.push(item)
                 $('.filelist').children('ul').append(
-                    '<li class="list-group-item listActive' + index + '">' + item.key + '<a title="Enter" href="' + item.value + '" id="filelist' + index + '">点击下载</a></li>'
+                    '<li class="list-group-item listActive' + (index-1) + '">' + item.key + '<a title="Enter" href="' + item.value + '" id="filelist' + (index-1) + '">点击下载</a></li>'
                 )
             }
         })
