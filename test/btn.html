@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../assets/js/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+    <button id="export" >按钮禁用属性</button>
+</body>
+<script>
+    
+    $(document).ready(function () {
+
+        $('#export').attr("disabled",true)
+
+        setTimeout(function(){
+
+            $('#export').removeAttr("disabled")
+        },2000)
+    })
+
+</script>
+
+</html>
