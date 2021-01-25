@@ -121,7 +121,7 @@
         <!-- 页面头 -->
         <div class="page-header">
             <h1>文件下载搜索引擎
-                <small> 192.168.1.10 </small>
+                <small> 192.168.0.90 </small>
             </h1>
         </div>
         <!-- 走马灯 -->
@@ -188,8 +188,8 @@
             value: '/zipwar/newNeed.zip'
         },
         {
-            key: '202000.apk',
-            value: '/apk/202000.apk'
+            key: '2.2.1司机端',
+            value: '/apk/2.2.1sijiduan.apk'
         }
     ]
     // 搜索结果数据库
@@ -238,7 +238,7 @@
                 width: 100,
                 height: 100
             });
-            qrcodeSet.makeCode('http://192.168.1.10' + fileListAhref[focusIndex].value)
+            qrcodeSet.makeCode('http://192.168.0.90:3000' + fileListAhref[focusIndex].value)
         } else {
             var qrcodeSet = new QRCode(document.getElementById("qrcode"), {
                 width: 100,
